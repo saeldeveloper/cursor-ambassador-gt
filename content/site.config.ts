@@ -1,15 +1,13 @@
-// REPLACE: Update these values for your local Cursor community.
-// REPLACE: Keep links and names community-specific.
 export const siteConfig = {
-	communityName: 'Cursor Community',
-	communityNameLocal: 'YourCity',
-	city: 'Your City',
-	country: 'Your Country',
-	lumaUrl: 'https://lu.ma/cursor-community',
+	communityName: 'Cursor Guatemala',
+	communityNameLocal: 'Cursor Guatemala',
+	city: 'Guatemala City',
+	country: 'Guatemala',
+	lumaUrl: 'https://luma.com/935r7zp6',
 	cursorCommunityUrl: 'https://cursor.com/community',
-	defaultLocale: 'en',
-	locales: ['en'],
-	footerTagline: 'Made with Cursor by ambassadors worldwide',
+	defaultLocale: 'es',
+	locales: ['es', 'en'],
+	footerTagline: 'Hecho con Cursor por ambassadors en Guatemala 🇬🇹',
 };
 
 export type SiteConfig = typeof siteConfig;

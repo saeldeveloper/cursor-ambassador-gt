@@ -1,12 +1,10 @@
 import { HeaderPhoto } from '@/lib/types';
 
-// REPLACE: Use real event/city images that represent your local community.
-// This layout uses explicit grid coordinates (1-indexed) for deterministic placement.
-// Desktop grid: 4 columns x 4 rows (16 cells).
+// TODO: Replace with real Cursor Guatemala event photos
 export const headerPhotos: HeaderPhoto[] = [
 	{
 		src: '/images/events/cursor-event-01.jpg',
-		alt: 'Cursor community event group photo',
+		alt: 'Cursor Meetup Antigua Guatemala — comunidad tech',
 		row: 1,
 		col: 1,
 		rowSpan: 2,
@@ -15,14 +13,14 @@ export const headerPhotos: HeaderPhoto[] = [
 	},
 	{
 		src: '/images/events/cursor-event-02.jpg',
-		alt: 'Cursor meetup participants working together',
+		alt: 'Developers colaborando en Cursor Guatemala',
 		row: 1,
 		col: 3,
 		mobile: { row: 3, col: 1 },
 	},
 	{
 		src: '/images/events/cursor-event-04.jpg',
-		alt: 'Cursor community photo from event',
+		alt: 'Cursor Hackathon Guatemala 2026 en UVG',
 		row: 1,
 		col: 4,
 		rowSpan: 2,
@@ -30,14 +28,14 @@ export const headerPhotos: HeaderPhoto[] = [
 	},
 	{
 		src: '/images/events/cursor-event-03.jpg',
-		alt: 'Cursor workshop moment during session',
+		alt: 'Charlas y live coding en Cursor Guatemala',
 		row: 2,
 		col: 3,
 		mobile: { row: 3, col: 2 },
 	},
 	{
 		src: '/images/events/cursor-event-05.jpg',
-		alt: 'Cursor meetup attendees in discussion',
+		alt: 'Equipos construyendo prototipos en el hackathon',
 		row: 3,
 		col: 1,
 		rowSpan: 2,
@@ -45,7 +43,7 @@ export const headerPhotos: HeaderPhoto[] = [
 	},
 	{
 		src: '/images/events/cursor-event-07.jpg',
-		alt: 'Cursor community moment from social share',
+		alt: 'Cafe Cursor Guatemala — aprendizaje practico de IA',
 		row: 3,
 		col: 2,
 		rowSpan: 2,
@@ -54,7 +52,7 @@ export const headerPhotos: HeaderPhoto[] = [
 	},
 	{
 		src: '/images/events/cursor-event-06.jpg',
-		alt: 'Cursor event participants and speakers',
+		alt: 'Comunidad Cursor Guatemala reunida',
 		row: 3,
 		col: 4,
 		rowSpan: 2,
