@@ -38,6 +38,7 @@
 		"by": "por",
 		"galleryTitle": "Fotos",
 		"gallerySubtitle": "{count} fotos del evento",
+		"photoCredits": "Créditos de fotos:",
 		"openPhoto": "Abrir foto {index}",
 		"closeGallery": "Cerrar galeria",
 		"prevPhoto": "Foto anterior",
@@ -66,8 +67,8 @@
 		"sameNumber": "mismo numero"
 	},
 	"worldEvents": {
-		"title": "Cursor Guatemala en accion",
-		"subtitle": "Construyendo comunidad tech en Guatemala",
-		"description": "Desde Ciudad de Guatemala hasta Antigua, la comunidad Cursor esta creciendo. Meetups, hackathons y cafes — juntos estamos construyendo el futuro."
+		"title": "Cursor Guatemala en acción",
+		"subtitle": "Desde Ciudad de Guatemala hasta Antigua",
+		"description": "Desde Ciudad de Guatemala hasta Antigua, la comunidad Cursor está creciendo. Meetups, hackathons y cafés — juntos estamos construyendo el futuro."
 	}
 }

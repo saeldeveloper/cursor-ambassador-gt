@@ -13,7 +13,16 @@ interface EventRecapProps {
 }
 
 const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
-	const { t } = useI18n();
+	const { t, locale } = useI18n();
+
+	const tr = recap.translations?.[locale];
+	const summary = tr?.summary ?? recap.summary;
+	const date = tr?.date ?? recap.date;
+	const highlights = tr?.highlights ?? recap.highlights;
+	const speakers = recap.speakers?.map((speaker, i) => ({
+		...speaker,
+		topic: tr?.speakerTopics?.[i] ?? speaker.topic,
+	}));
 
 	return (
 		<motion.section
@@ -24,7 +33,7 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 		>
 			<div className="bg-[#1B1913] border border-cursor-border rounded-lg p-8">
 				<h2 className="text-xl font-semibold text-cursor-text mb-2">{recap.title}</h2>
-				<p className="text-cursor-text-muted text-sm mb-6">{recap.date}</p>
+				<p className="text-cursor-text-muted text-sm mb-6">{date}</p>
 
 				{recap.host ? (
 					<div className="text-cursor-text-muted text-sm mb-6 flex items-center gap-2">
@@ -52,21 +61,21 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 						{t('home.attendees', { count: String(recap.attendees) })}
 					</p>
 				) : null}
-				<div className="text-cursor-text-muted text-sm leading-relaxed space-y-3">
-					{recap.summary.map((paragraph, index) => (
-						<p key={index}>{paragraph}</p>
-					))}
-				</div>
+			<div className="text-cursor-text-muted text-sm leading-relaxed space-y-3">
+				{summary.map((paragraph, index) => (
+					<p key={index}>{paragraph}</p>
+				))}
+			</div>
 
-				{/* Speakers */}
-				{recap.speakers && recap.speakers.length > 0 ? (
+			{/* Speakers */}
+			{speakers && speakers.length > 0 ? (
 					<div className="border-t border-cursor-border mt-6 pt-6">
 						<div className="flex items-center gap-2 mb-4">
 							<Mic className="w-4 h-4 text-cursor-accent-blue" />
 							<h3 className="text-sm font-medium text-cursor-text">{t('recap.speakers')}</h3>
 						</div>
-						<div className="grid gap-3 sm:grid-cols-2">
-							{recap.speakers.map((speaker) => (
+					<div className="grid gap-3 sm:grid-cols-2">
+						{speakers.map((speaker) => (
 								<div
 									key={speaker.name}
 									className="bg-cursor-bg-dark border border-cursor-border rounded-md p-4 flex items-start gap-3"
@@ -140,15 +149,15 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 					</div>
 				) : null}
 
-				{/* Highlights / Feedback */}
-				{recap.highlights && recap.highlights.length > 0 ? (
-					<div className="border-t border-cursor-border mt-6 pt-6">
-						<div className="flex items-center gap-2 mb-4">
-							<MessageSquareQuote className="w-4 h-4 text-cursor-accent-purple" />
-							<h3 className="text-sm font-medium text-cursor-text">{t('recap.highlights')}</h3>
-						</div>
-						<div className="space-y-3">
-							{recap.highlights.map((highlight, index) => (
+			{/* Highlights / Feedback */}
+			{highlights && highlights.length > 0 ? (
+				<div className="border-t border-cursor-border mt-6 pt-6">
+					<div className="flex items-center gap-2 mb-4">
+						<MessageSquareQuote className="w-4 h-4 text-cursor-accent-purple" />
+						<h3 className="text-sm font-medium text-cursor-text">{t('recap.highlights')}</h3>
+					</div>
+					<div className="space-y-3">
+						{highlights.map((highlight, index) => (
 								<blockquote
 									key={index}
 									className="bg-cursor-bg-dark border-l-2 border-cursor-accent-purple/40 rounded-r-md px-4 py-3"
@@ -196,7 +205,7 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 
 				{recap.photoCredits && recap.photoCredits.length > 0 ? (
 					<div className="border-t border-cursor-border mt-6 pt-6 text-sm text-cursor-text-muted">
-						<span className="mr-1">Photo credits:</span>
+						<span className="mr-1">{t('recap.photoCredits')}</span>
 						{recap.photoCredits.map((credit, index) => (
 							<span key={`${credit.name}-${index}`}>
 								{credit.url ? (

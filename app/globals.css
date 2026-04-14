@@ -45,6 +45,7 @@
 }
 
 @theme {
+	/* Dark Mode (default) */
 	--color-cursor-bg: #14120b;
 	--color-cursor-bg-dark: #0f0d06;
 	--color-cursor-surface: #1c1a12;
@@ -69,14 +70,26 @@
 	--color-cursor-accent-yellow-bg: rgba(42, 36, 24, 0.3);
 	--color-cursor-accent-orange-bg: rgba(42, 32, 24, 0.3);
 
+	/* Light Mode */
+	--color-cursor-light-bg: #f7f7f4;
+	--color-cursor-light-surface: #ffffff;
+	--color-cursor-light-text: #26251e;
+	--color-cursor-light-text-secondary: rgba(38, 37, 30, 0.75);
+	--color-cursor-light-text-muted: rgba(38, 37, 30, 0.55);
+	--color-cursor-light-border: rgba(38, 37, 30, 0.08);
+
 	--font-sans: 'CursorGothic', system-ui, sans-serif;
 	--font-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 	--font-cursor: 'CursorGothic', system-ui, sans-serif;
 	--font-bsru: 'BSRU Pro', sans-serif;
 	--font-thai: 'Thasadith', sans-serif;
 
+	/* Animations like cursor.com */
 	--animate-fade-in: fade-in 0.5s ease-out forwards;
-	--animate-slide-up: slide-up 0.5s ease-out forwards;
+	--animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+	--animate-fade-in-right: fade-in-right 0.6s ease-out forwards;
+	--animate-bar-grow: bar-grow 0.4s ease-out forwards;
+	--animate-tile-pop-in: tile-pop-in 0.4s ease-out forwards;
 
 	@keyframes fade-in {
 		0% {
@@ -87,14 +100,47 @@
 		}
 	}
 
-	@keyframes slide-up {
+	@keyframes fade-in-up {
 		0% {
 			opacity: 0;
-			transform: translateY(20px);
+			transform: translateY(24px);
 		}
 		100% {
 			opacity: 1;
 			transform: translateY(0);
+		}
+	}
+
+	@keyframes fade-in-right {
+		0% {
+			opacity: 0;
+			transform: translateX(-24px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes bar-grow {
+		0% {
+			transform: scaleX(0);
+			transform-origin: left;
+		}
+		100% {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+	}
+
+	@keyframes tile-pop-in {
+		0% {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
 		}
 	}
 }
@@ -104,14 +150,46 @@
 	body {
 		max-width: 100vw;
 		overflow-x: hidden;
-		background: #14120b;
-		color: #edecec;
-	}
-
-	body {
+		background: var(--color-cursor-bg);
+		color: var(--color-cursor-text);
 		font-family: var(--font-sans);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Light mode support */
+	html.light,
+	html.light body {
+		background: var(--color-cursor-light-bg);
+		color: var(--color-cursor-light-text);
+	}
+
+	html.light .bg-cursor-bg {
+		background: var(--color-cursor-light-bg) !important;
+	}
+
+	html.light .text-cursor-text {
+		color: var(--color-cursor-light-text) !important;
+	}
+
+	html.light .text-cursor-text-secondary {
+		color: var(--color-cursor-light-text-secondary) !important;
+	}
+
+	html.light .text-cursor-text-muted {
+		color: var(--color-cursor-light-text-muted) !important;
+	}
+
+	html.light .border-cursor-border {
+		border-color: var(--color-cursor-light-border) !important;
+	}
+
+	html.light .bg-cursor-surface {
+		background: var(--color-cursor-light-surface) !important;
+	}
+
+	html.light .bg-cursor-surface-raised {
+		background: var(--color-cursor-light-surface) !important;
 	}
 }
 

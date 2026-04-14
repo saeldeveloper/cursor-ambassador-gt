@@ -2,21 +2,31 @@ import { WorldEventPhoto } from '@/lib/types';
 
 export const worldEventPhotos: WorldEventPhoto[] = [
 	{
-		src: '/images/events/cursor-event-01.jpg',
+		src: '/events/antigua-cursor-gt-1.jpeg',
 		location: 'Antigua Guatemala',
-		date: 'March 2026',
-		alt: 'Cursor Meetup in Antigua Guatemala',
+		date: '22 de marzo de 2026',
+		dates: { es: '22 de marzo de 2026', en: 'March 22, 2026' },
+		alt: 'Cursor Meetup Antigua Guatemala',
 	},
 	{
-		src: '/images/events/cursor-event-04.jpg',
+		src: '/events/cursor-hackathon-gt-1.jpeg',
 		location: 'Ciudad de Guatemala',
-		date: 'March 2026',
-		alt: 'Cursor Hackathon at UVG, Guatemala City',
+		date: '7 de marzo de 2026',
+		dates: { es: '7 de marzo de 2026', en: 'March 7, 2026' },
+		alt: 'Cursor Hackathon Guatemala — UVG',
 	},
 	{
-		src: '/images/events/cursor-event-07.jpg',
+		src: '/events/cafe-cursor-gt-1.jpeg',
 		location: 'Ciudad de Guatemala',
-		date: 'February 2026',
+		date: '13 de diciembre de 2025',
+		dates: { es: '13 de diciembre de 2025', en: 'December 13, 2025' },
 		alt: 'Cafe Cursor Guatemala',
+	},
+	{
+		src: '/events/primer-meetup-cursor-gt-1.jpeg',
+		location: 'Ciudad de Guatemala',
+		date: '31 de agosto de 2025',
+		dates: { es: '31 de agosto de 2025', en: 'August 31, 2025' },
+		alt: 'Primer Meetup de Cursor en Guatemala',
 	},
 ];

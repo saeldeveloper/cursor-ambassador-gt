@@ -5,8 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
 import { getPhotos } from '@/lib/photos';
+import { useI18n } from '@/lib/i18n';
 
 const WorldEventsCarousel: React.FC = () => {
+	const { locale } = useI18n();
 	const photos = getPhotos();
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isFullscreen, setIsFullscreen] = useState(false);
@@ -40,10 +42,12 @@ const WorldEventsCarousel: React.FC = () => {
 							sizes="(max-width: 768px) 50vw, 33vw"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-							<div className="absolute bottom-0 left-0 right-0 p-3">
-								<p className="text-white text-sm font-medium">{photo.location}</p>
-								{photo.date ? <p className="text-white/80 text-xs">{photo.date}</p> : null}
-							</div>
+					<div className="absolute bottom-0 left-0 right-0 p-3">
+							<p className="text-white text-sm font-medium">{photo.location}</p>
+							{(photo.dates?.[locale] ?? photo.date) ? (
+								<p className="text-white/80 text-xs">{photo.dates?.[locale] ?? photo.date}</p>
+							) : null}
+						</div>
 						</div>
 					</motion.div>
 				))}
@@ -86,8 +90,8 @@ const WorldEventsCarousel: React.FC = () => {
 							</div>
 
 							<div className="bg-cursor-bg border border-cursor-border rounded-lg p-4 text-center">
-								<p className="text-cursor-text font-medium mb-1">{currentPhoto.location}</p>
-								<p className="text-cursor-text-muted text-sm">{currentPhoto.date}</p>
+						<p className="text-cursor-text font-medium mb-1">{currentPhoto.location}</p>
+							<p className="text-cursor-text-muted text-sm">{currentPhoto.dates?.[locale] ?? currentPhoto.date}</p>
 							</div>
 
 							{photos.length > 1 ? (

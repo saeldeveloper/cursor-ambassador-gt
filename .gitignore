@@ -30,3 +30,6 @@ next-env.d.ts
 # cursor/ide local
 .cursor/
 .claude/
+
+# MCP config — contiene API keys, nunca commitear
+.mcp.json

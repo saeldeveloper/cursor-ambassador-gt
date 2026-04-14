@@ -22,7 +22,7 @@
 		"hostingPartners": "Hosting Partners",
 		"community": "Cursor Community",
 		"allEvents": "All events on Luma",
-		"madeWith": "Made with Cursor by ambassadors worldwide",
+		"madeWith": "Made with Cursor by ambassadors in Guatemala 🇬🇹",
 		"joinNext": "Join the next event",
 		"followUs": "Follow Cursor on X"
 	},
@@ -38,6 +38,7 @@
 		"by": "by",
 		"galleryTitle": "Photos",
 		"gallerySubtitle": "{count} photos from the event",
+		"photoCredits": "Photo credits:",
 		"openPhoto": "Open photo {index}",
 		"closeGallery": "Close gallery",
 		"prevPhoto": "Previous photo",

@@ -13,6 +13,7 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { siteConfig } from '@/content/site.config';
 import { upcomingEvents } from '@/content/events';
+import { ModernMosaic } from '@/components/blocks/modern-mosaic';
 
 function buildHomeJsonLd() {
 	const org = {
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
 		<main className="min-h-screen bg-cursor-bg text-cursor-text scroll-smooth">
 			<JsonLd data={buildHomeJsonLd()} />
 			<Navbar />
-			<HeroHeader />
+			<ModernMosaic />
 
 			<div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
 				<AmbassadorSection />

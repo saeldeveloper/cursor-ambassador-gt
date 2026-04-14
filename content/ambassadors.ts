@@ -4,26 +4,26 @@ export const ambassadors: Ambassador[] = [
 	{
 		name: 'Diego Andrés Cum Chávez',
 		role: 'Cursor Ambassador / Expert & Community Lead',
-		photo: '/images/ambassadors/amb1.png',
+		photo: '/images/ambassadors/Diego .jpeg',
 		links: {
 			linkedin: 'https://www.linkedin.com/in/diegodevgt/',
 			website: 'https://cursorguatemala.com/',
 		},
 	},
 	{
-		name: 'Diego V. Rosales',
+		name: 'Vladimir',
 		role: 'Co-organizer & CoFounder',
-		photo: '/images/ambassadors/amb2.png',
+		photo: '/images/ambassadors/Vladimir .jpeg',
 		links: {
-			linkedin: 'https://linkedin.com/',
+			linkedin: 'https://www.linkedin.com/in/dvrm/',
 		},
 	},
 	{
 		name: 'Eleanor Menchu Melgar',
 		role: 'Co-organizer',
-		photo: '/images/ambassadors/amb3.png',
+		photo: '/images/ambassadors/eleonor .jpeg',
 		links: {
-			linkedin: 'https://linkedin.com/',
+			linkedin: 'https://www.linkedin.com/in/eleanormm2/',
 		},
 	},
 ];

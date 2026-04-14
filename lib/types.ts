@@ -6,6 +6,7 @@ export interface CursorEvent {
 	titleLocal?: string;
 	date: string;
 	displayDate: string;
+	displayDates?: Record<string, string>;
 	attendees?: number;
 	location: string;
 	lumaUrl?: string;
@@ -43,6 +44,7 @@ export interface FeaturedResource {
 	description: string;
 	href: string;
 	ctaLabel: string;
+	translations?: Record<string, { description?: string; ctaLabel?: string }>;
 }
 
 export interface HeaderPhoto {
@@ -95,6 +97,13 @@ export interface RecapResource {
 	url: string;
 }
 
+export interface RecapLocaleData {
+	date?: string;
+	summary?: string[];
+	speakerTopics?: string[];
+	highlights?: RecapHighlight[];
+}
+
 export interface RecapData {
 	slug: string;
 	title: string;
@@ -108,11 +117,13 @@ export interface RecapData {
 	resources?: RecapResource[];
 	photoCredits?: RecapPhotoCredit[];
 	photos: GalleryPhoto[];
+	translations?: Record<string, RecapLocaleData>;
 }
 
 export interface WorldEventPhoto {
 	src: string;
 	location: string;
 	date?: string;
+	dates?: Record<string, string>;
 	alt: string;
 }

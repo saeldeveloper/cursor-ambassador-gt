@@ -38,9 +38,9 @@ const Footer: React.FC = () => {
 							{siteConfig.communityNameLocal}
 						</span>
 					</div>
-					<p className="text-cursor-text-muted text-sm leading-relaxed">
-						{siteConfig.footerTagline || t('footer.madeWith')}
-					</p>
+				<p className="text-cursor-text-muted text-sm leading-relaxed">
+					{t('footer.madeWith')}
+				</p>
 				</div>
 
 				{/* Community links */}
@@ -90,9 +90,9 @@ const Footer: React.FC = () => {
 				</div>
 			</div>
 
-			<p className="text-cursor-text-faint text-xs text-center mt-10 pb-6">
-				{siteConfig.footerTagline || t('footer.madeWith')}
-			</p>
+		<p className="text-cursor-text-faint text-xs text-center mt-10 pb-6">
+			{t('footer.madeWith')}
+		</p>
 		</motion.footer>
 	);
 };

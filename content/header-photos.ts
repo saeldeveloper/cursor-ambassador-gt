@@ -3,7 +3,7 @@ import { HeaderPhoto } from '@/lib/types';
 // TODO: Replace with real Cursor Guatemala event photos
 export const headerPhotos: HeaderPhoto[] = [
 	{
-		src: '/images/events/cursor-event-01.jpg',
+		src: '/events/cursor-event-31.jpg',
 		alt: 'Cursor Meetup Antigua Guatemala — comunidad tech',
 		row: 1,
 		col: 1,
@@ -12,14 +12,14 @@ export const headerPhotos: HeaderPhoto[] = [
 		mobile: { row: 1, col: 1, rowSpan: 2, colSpan: 2 },
 	},
 	{
-		src: '/images/events/cursor-event-02.jpg',
+		src: '/events/cursor-event-32.jpg',
 		alt: 'Developers colaborando en Cursor Guatemala',
 		row: 1,
 		col: 3,
 		mobile: { row: 3, col: 1 },
 	},
 	{
-		src: '/images/events/cursor-event-04.jpg',
+		src: '/events/cursor-event-33.jpg',
 		alt: 'Cursor Hackathon Guatemala 2026 en UVG',
 		row: 1,
 		col: 4,
@@ -27,14 +27,14 @@ export const headerPhotos: HeaderPhoto[] = [
 		mobileHidden: true,
 	},
 	{
-		src: '/images/events/cursor-event-03.jpg',
+		src: '/events/cursor-event-34.jpg',
 		alt: 'Charlas y live coding en Cursor Guatemala',
 		row: 2,
 		col: 3,
 		mobile: { row: 3, col: 2 },
 	},
 	{
-		src: '/images/events/cursor-event-05.jpg',
+		src: '/events/cursor-event-35.jpg',
 		alt: 'Equipos construyendo prototipos en el hackathon',
 		row: 3,
 		col: 1,
@@ -42,7 +42,7 @@ export const headerPhotos: HeaderPhoto[] = [
 		mobileHidden: true,
 	},
 	{
-		src: '/images/events/cursor-event-07.jpg',
+		src: '/events/cursor-event-36.jpg',
 		alt: 'Cafe Cursor Guatemala — aprendizaje practico de IA',
 		row: 3,
 		col: 2,
@@ -51,7 +51,7 @@ export const headerPhotos: HeaderPhoto[] = [
 		mobileHidden: true,
 	},
 	{
-		src: '/images/events/cursor-event-06.jpg',
+		src: '/events/cursor-event-37.jpg',
 		alt: 'Comunidad Cursor Guatemala reunida',
 		row: 3,
 		col: 4,
