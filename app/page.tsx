@@ -48,7 +48,7 @@ const Home: React.FC = () => {
 			<JsonLd data={buildHomeJsonLd()} />
 			<Navbar />
 			<ModernMosaic />
-
+			{/* hello */}
 			<div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
 				<AmbassadorSection />
 				<SectionDivider />
