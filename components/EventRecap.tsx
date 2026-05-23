@@ -7,38 +7,37 @@ import Link from 'next/link';
 import { Mic, Lightbulb, MessageSquareQuote, Link as LinkIcon, Calendar, Users, ChevronLeft } from 'lucide-react';
 import PhotoGallery from '@/components/PhotoGallery';
 import { RecapData } from '@/lib/types';
-import { useI18n } from '@/lib/i18n';
 
 interface EventRecapProps {
 	recap: RecapData;
 }
 
+const RECAP_LABELS = {
+	backHome: 'Volver al inicio',
+	attendees: (count: number) => `${count} asistentes`,
+	hostedAt: 'Organizado en',
+	photoGallery: 'Galería de fotos',
+	photoCredits: 'Créditos de fotos:',
+	speakers: 'Speakers',
+	projects: 'Proyectos presentados',
+	highlights: 'Feedback de la comunidad',
+	resources: 'Recursos',
+	by: 'por',
+} as const;
+
 const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
-	const { t, locale } = useI18n();
-
-	const tr = recap.translations?.[locale];
-	const summary = tr?.summary ?? recap.summary;
-	const date = tr?.date ?? recap.date;
-	const highlights = tr?.highlights ?? recap.highlights;
-	const speakers = recap.speakers?.map((speaker, i) => ({
-		...speaker,
-		topic: tr?.speakerTopics?.[i] ?? speaker.topic,
-	}));
-
 	return (
 		<div className="space-y-8">
-			{/* Back button */}
 			<div>
 				<Link
 					href="/"
 					className="inline-flex items-center gap-2 text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors group"
 				>
 					<ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-					<span>Volver al inicio</span>
+					<span>{RECAP_LABELS.backHome}</span>
 				</Link>
 			</div>
 
-			{/* Hero Event Header */}
 			<motion.div
 				initial={{ opacity: 0, y: 15 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -48,23 +47,23 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 				<h1 className="text-3xl md:text-4xl lg:text-5xl font-regular tracking-tight text-cursor-text mb-4">
 					{recap.title}
 				</h1>
-				
+
 				<div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-cursor-text-secondary">
 					<div className="flex items-center gap-2">
 						<Calendar className="w-4 h-4 text-cursor-text-muted" />
-						<span>{date}</span>
+						<span>{recap.date}</span>
 					</div>
-					
-					{recap.attendees && (
+
+					{recap.attendees ? (
 						<div className="flex items-center gap-2">
 							<Users className="w-4 h-4 text-cursor-text-muted" />
-							<span>{t('home.attendees', { count: String(recap.attendees) })}</span>
+							<span>{RECAP_LABELS.attendees(recap.attendees)}</span>
 						</div>
-					)}
+					) : null}
 
-					{recap.host && (
+					{recap.host ? (
 						<div className="flex items-center gap-2">
-							<span className="text-cursor-text-muted">Organizado en</span>
+							<span className="text-cursor-text-muted">{RECAP_LABELS.hostedAt}</span>
 							<a
 								href={recap.host.url || '#'}
 								target="_blank"
@@ -81,37 +80,33 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 								{recap.host.name}
 							</a>
 						</div>
-					)}
+					) : null}
 				</div>
 			</motion.div>
 
-			{/* Main Layout Grid */}
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-start">
-				
-				{/* Left Side: Summary & Gallery (Col span 2) */}
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.5, delay: 0.1 }}
 					className="lg:col-span-2 space-y-8"
 				>
-					{/* Narrative description */}
 					<div className="prose prose-invert max-w-none text-cursor-text-secondary text-base leading-relaxed space-y-4">
-						{summary.map((paragraph, index) => (
-							<p key={index} className="text-justify md:text-left">{paragraph}</p>
+						{recap.summary.map((paragraph, index) => (
+							<p key={index} className="text-justify md:text-left">
+								{paragraph}
+							</p>
 						))}
 					</div>
 
-					{/* Photo Gallery */}
 					<div className="pt-6 border-t border-cursor-border">
-						<h2 className="text-xl font-semibold text-cursor-text mb-4">Galería de fotos</h2>
-						<PhotoGallery photos={recap.photos} embedded />
+						<h2 className="text-xl font-semibold text-cursor-text mb-4">{RECAP_LABELS.photoGallery}</h2>
+						<PhotoGallery photos={recap.photos} embedded forceLocale="es" />
 					</div>
 
-					{/* Photo Credits */}
-					{recap.photoCredits && recap.photoCredits.length > 0 && (
+					{recap.photoCredits && recap.photoCredits.length > 0 ? (
 						<div className="text-xs text-cursor-text-faint pt-2">
-							<span className="mr-1">{t('recap.photoCredits')}</span>
+							<span className="mr-1">{RECAP_LABELS.photoCredits}</span>
 							{recap.photoCredits.map((credit, index) => (
 								<span key={`${credit.name}-${index}`}>
 									{credit.url ? (
@@ -130,33 +125,31 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 								</span>
 							))}
 						</div>
-					)}
+					) : null}
 				</motion.div>
 
-				{/* Right Side: Sidebar (Col span 1) */}
 				<motion.div
 					initial={{ opacity: 0, x: 10 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
 					className="space-y-6 lg:border-l lg:border-cursor-border lg:pl-8 lg:sticky lg:top-24"
 				>
-					{/* Speakers Section */}
-					{speakers && speakers.length > 0 && (
+					{recap.speakers && recap.speakers.length > 0 ? (
 						<div className="space-y-4">
 							<div className="flex items-center gap-2 border-b border-cursor-border pb-2">
 								<Mic className="w-4 h-4 text-cursor-accent-blue" />
 								<h3 className="text-sm font-semibold uppercase tracking-wider text-cursor-text-secondary">
-									{t('recap.speakers')}
+									{RECAP_LABELS.speakers}
 								</h3>
 							</div>
 							<div className="space-y-3">
-								{speakers.map((speaker) => (
+								{recap.speakers.map((speaker) => (
 									<div
 										key={speaker.name}
 										className="bg-cursor-bg-dark/40 border border-cursor-border/60 rounded-lg p-3.5 flex items-start gap-3 transition-colors hover:bg-cursor-bg-dark/80"
 									>
 										{speaker.photo ? (
-											<div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-cursor-border-emphasis">
+											<div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-cursor-border-emphasis">
 												<Image
 													src={speaker.photo}
 													alt={speaker.name}
@@ -185,15 +178,14 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 								))}
 							</div>
 						</div>
-					)}
+					) : null}
 
-					{/* Projects Section */}
-					{recap.projects && recap.projects.length > 0 && (
+					{recap.projects && recap.projects.length > 0 ? (
 						<div className="space-y-4">
 							<div className="flex items-center gap-2 border-b border-cursor-border pb-2">
 								<Lightbulb className="w-4 h-4 text-cursor-accent-yellow" />
 								<h3 className="text-sm font-semibold uppercase tracking-wider text-cursor-text-secondary">
-									{t('recap.projects')}
+									{RECAP_LABELS.projects}
 								</h3>
 							</div>
 							<div className="space-y-3">
@@ -218,53 +210,51 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 										<p className="text-cursor-text-muted text-xs mt-1 leading-relaxed">
 											{project.description}
 										</p>
-										{project.author && (
+										{project.author ? (
 											<p className="text-cursor-text-faint text-xs mt-2">
-												{t('recap.by')} {project.author}
+												{RECAP_LABELS.by} {project.author}
 											</p>
-										)}
+										) : null}
 									</div>
 								))}
 							</div>
 						</div>
-					)}
+					) : null}
 
-					{/* Highlights / Feedback Section */}
-					{highlights && highlights.length > 0 && (
+					{recap.highlights && recap.highlights.length > 0 ? (
 						<div className="space-y-4">
 							<div className="flex items-center gap-2 border-b border-cursor-border pb-2">
 								<MessageSquareQuote className="w-4 h-4 text-cursor-accent-purple" />
 								<h3 className="text-sm font-semibold uppercase tracking-wider text-cursor-text-secondary">
-									{t('recap.highlights')}
+									{RECAP_LABELS.highlights}
 								</h3>
 							</div>
 							<div className="space-y-3">
-								{highlights.map((highlight, index) => (
+								{recap.highlights.map((highlight, index) => (
 									<blockquote
 										key={index}
-										className="bg-cursor-bg-dark/40 border-l-2 border-[#b8a8c8] rounded-r-lg px-3.5 py-3 text-sm"
+										className="bg-cursor-bg-dark/40 border-l-2 border-cursor-accent-purple rounded-r-lg px-3.5 py-3 text-sm"
 									>
 										<p className="text-cursor-text-secondary italic leading-relaxed">
 											&ldquo;{highlight.quote}&rdquo;
 										</p>
-										{highlight.author && (
+										{highlight.author ? (
 											<p className="text-cursor-text-faint text-xs mt-1.5 font-medium text-right">
 												&mdash; {highlight.author}
 											</p>
-										)}
+										) : null}
 									</blockquote>
 								))}
 							</div>
 						</div>
-					)}
+					) : null}
 
-					{/* Resources Section */}
-					{recap.resources && recap.resources.length > 0 && (
+					{recap.resources && recap.resources.length > 0 ? (
 						<div className="space-y-4">
 							<div className="flex items-center gap-2 border-b border-cursor-border pb-2">
 								<LinkIcon className="w-4 h-4 text-cursor-accent-green" />
 								<h3 className="text-sm font-semibold uppercase tracking-wider text-cursor-text-secondary">
-									{t('recap.resources')}
+									{RECAP_LABELS.resources}
 								</h3>
 							</div>
 							<ul className="space-y-2">
@@ -283,9 +273,8 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 								))}
 							</ul>
 						</div>
-					)}
+					) : null}
 				</motion.div>
-				
 			</div>
 		</div>
 	);

@@ -30,7 +30,7 @@ const WorldEventsCarousel: React.FC = () => {
 	return (
 		<div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
 			{/* Main Photo Display Area */}
-			<div className="relative flex-1 aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-lg overflow-hidden bg-black/40 group">
+			<div className="relative flex-1 aspect-4/3 sm:aspect-16/10 md:aspect-video rounded-lg overflow-hidden bg-black/40 group">
 				<AnimatePresence mode="wait">
 					<motion.div
 						key={currentIndex}
@@ -57,14 +57,14 @@ const WorldEventsCarousel: React.FC = () => {
 					<button
 						onClick={handlePrev}
 						className="pointer-events-auto bg-black/60 hover:bg-black/80 border border-white/10 rounded-full p-2 text-white hover:scale-105 transition-all"
-						aria-label="Previous image"
+						aria-label={t('worldEvents.prevImage')}
 					>
 						<ChevronLeft className="w-5 h-5" />
 					</button>
 					<button
 						onClick={handleNext}
 						className="pointer-events-auto bg-black/60 hover:bg-black/80 border border-white/10 rounded-full p-2 text-white hover:scale-105 transition-all"
-						aria-label="Next image"
+						aria-label={t('worldEvents.nextImage')}
 					>
 						<ChevronRight className="w-5 h-5" />
 					</button>
@@ -88,7 +88,7 @@ const WorldEventsCarousel: React.FC = () => {
 						{currentPhoto.alt}
 					</h3>
 					<p className="text-sm text-cursor-text-muted leading-relaxed mb-4">
-						Momentos destacados e interacciones de nuestra comunidad local de Cursor en {currentPhoto.location}. Una mirada a los encuentros donde compartimos conocimiento e impulsamos el desarrollo tecnológico.
+						{t('worldEvents.carouselDescription', { location: currentPhoto.location })}
 					</p>
 					{currentPhoto.recapPath && (
 						<Link
@@ -104,14 +104,14 @@ const WorldEventsCarousel: React.FC = () => {
 				{/* Thumbnails Row */}
 				<div>
 					<p className="text-xs font-semibold text-cursor-text-muted uppercase tracking-wider mb-3">
-						Galería de Eventos
+						{t('worldEvents.galleryLabel')}
 					</p>
 					<div className="flex gap-2.5 overflow-x-auto pb-1">
 						{photos.map((photo, index) => (
 							<button
 								key={index}
 								onClick={() => setCurrentIndex(index)}
-								className={`relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 border-2 transition-all ${
+								className={`relative w-16 h-16 rounded-md overflow-hidden shrink-0 border-2 transition-all ${
 									index === currentIndex
 										? 'border-[#f54e00] scale-95 shadow-md shadow-[#f54e00]/25'
 										: 'border-transparent hover:border-white/20'

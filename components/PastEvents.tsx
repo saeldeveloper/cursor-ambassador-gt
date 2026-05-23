@@ -69,9 +69,9 @@ const PastEvents: React.FC = () => {
 									{/* Glow backdrop */}
 									<div className="pointer-events-none absolute -inset-px sm:rounded-md bg-[radial-gradient(ellipse_at_bottom,rgba(245,78,0,0.06),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 									{event.thumbnail ? (
-										<div className="relative w-full sm:w-[280px] md:w-[360px] flex-shrink-0">
+										<div className="relative w-full sm:w-[280px] md:w-[360px] shrink-0">
 											<div
-												className={`aspect-[2/1] sm:aspect-auto sm:h-full overflow-hidden ${hasGallery ? 'grid grid-cols-3 gap-1' : ''}`}
+												className={`aspect-2/1 sm:aspect-auto sm:h-full overflow-hidden ${hasGallery ? 'grid grid-cols-3 gap-1' : ''}`}
 											>
 												<div className={`relative ${hasGallery ? 'col-span-2' : ''} sm:h-full`}>
 													<Image
@@ -110,8 +110,10 @@ const PastEvents: React.FC = () => {
 										</div>
 									) : null}
 
-									<div className="px-5 py-5 sm:p-6 flex flex-col justify-center flex-grow">
-										<h3 className="text-lg md:text-xl text-cursor-text font-medium mb-1.5">{event.title}</h3>
+									<div className="px-5 py-5 sm:p-6 flex flex-col justify-center grow">
+										<h3 className="text-lg md:text-xl text-cursor-text font-medium mb-1.5">
+											{locale === 'en' ? event.title : (event.titleLocal ?? event.title)}
+										</h3>
 										<div className="flex flex-wrap items-center gap-3 text-sm text-cursor-text-muted mb-3">
 											<div className="flex items-center gap-1.5">
 												<Calendar className="w-4 h-4" />

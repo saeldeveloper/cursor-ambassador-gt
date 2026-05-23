@@ -8,8 +8,8 @@ import LanguageToggle from '@/components/LanguageToggle'
 import { siteConfig } from '@/content/site.config'
 
 const NAV_LINKS = [
-  { href: 'https://luma.com/cursor-guatemala', key: 'home.upcomingEvents' },
-  { href: '#recaps', key: 'home.pastEvents' },
+  { href: 'https://luma.com/cursor-guatemala', key: 'nav.upcomingEvents' },
+  { href: '#recaps', key: 'nav.pastEvents' },
 ] as const
 
 function useScrollState() {
@@ -68,7 +68,7 @@ export default function Navbar() {
               className="h-6 md:h-7 w-auto transition-transform group-hover:scale-105"
             />
             <span className="font-cursor text-base md:text-lg font-semibold uppercase tracking-wide text-cursor-text-secondary">
-              Guatemala
+              {t('nav.communityName')}
             </span>
           </a>
 
@@ -101,7 +101,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2 text-cursor-text-muted hover:text-cursor-text transition-colors"
-              aria-label="Toggle menu"
+              aria-label={t('nav.toggleMenu')}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

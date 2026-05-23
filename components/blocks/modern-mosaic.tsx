@@ -93,9 +93,9 @@ export const ModernMosaic = () => {
       }}
     >
       {/* Left fade gradient */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 md:w-40 bg-gradient-to-r from-cursor-bg to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 md:w-40 bg-linear-to-r from-cursor-bg to-transparent" />
       {/* Right fade gradient */}
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-24 md:w-40 bg-gradient-to-l from-cursor-bg to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-24 md:w-40 bg-linear-to-l from-cursor-bg to-transparent" />
 
       {/* Scrollable carousel track */}
       <div
@@ -110,7 +110,7 @@ export const ModernMosaic = () => {
         {allImages.map((img, index) => (
           <motion.div
             key={`${img.src}-${index}`}
-            className="relative flex-shrink-0 group"
+            className="relative shrink-0 group"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.5) }}
@@ -126,7 +126,7 @@ export const ModernMosaic = () => {
                 draggable={false}
               />
               {/* Subtle bottom gradient for label readability */}
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 to-transparent" />
+              <motion.div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t to-transparent" />
             </div>
             {/* Label */}
             <p className="mt-3 text-sm md:text-base text-cursor-text-secondary font-cursor tracking-wide pl-1">
