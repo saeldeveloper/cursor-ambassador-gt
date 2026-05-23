@@ -3,7 +3,7 @@ export const siteConfig = {
 	communityNameLocal: 'Cursor Guatemala',
 	city: 'Guatemala City',
 	country: 'Guatemala',
-	lumaUrl: 'https://luma.com/cursor-guatemala?period=past',
+	lumaUrl: 'https://chat.whatsapp.com/B7qvuHRAVg2Bl57CpuhJ41',
 	cursorCommunityUrl: 'https://cursor.com/community',
 	defaultLocale: 'es',
 	locales: ['es', 'en'],

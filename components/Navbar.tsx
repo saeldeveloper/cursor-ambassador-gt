@@ -8,7 +8,7 @@ import LanguageToggle from '@/components/LanguageToggle'
 import { siteConfig } from '@/content/site.config'
 
 const NAV_LINKS = [
-  { href: '#upcoming', key: 'home.upcomingEvents' },
+  { href: 'https://luma.com/cursor-guatemala', key: 'home.upcomingEvents' },
   { href: '#recaps', key: 'home.pastEvents' },
 ] as const
 
@@ -50,10 +50,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 ${
           scrolled
-            ? 'bg-cursor-bg/80 backdrop-blur-xl border-b border-cursor-border'
-            : 'bg-transparent border-b border-transparent'
+            ? 'bg-cursor-bg  border-b border-cursor-border'
+            : ''
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center h-16">
@@ -67,7 +67,7 @@ export default function Navbar() {
               priority
               className="h-6 md:h-7 w-auto transition-transform group-hover:scale-105"
             />
-            <span className="font-cursor text-base md:text-lg font-semibold uppercase tracking-wide text-cursor-text">
+            <span className="font-cursor text-base md:text-lg font-semibold uppercase tracking-wide text-cursor-text-secondary">
               Guatemala
             </span>
           </a>
@@ -111,7 +111,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-cursor-bg/95 backdrop-blur-xl md:hidden">
+        <div className="fixed inset-0 top-16 z-40 bg-cursor-bg backdrop-blur-xl md:hidden">
           <div className="flex flex-col items-center gap-8 pt-12 px-4">
             {NAV_LINKS.map(({ href, key }) => (
               <a
